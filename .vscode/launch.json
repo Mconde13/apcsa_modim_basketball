@@ -4,6 +4,12 @@
             "type": "java",
             "name": "CodeLens (Launch) - Game",
             "request": "launch",
+            "mainClass": "Game"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Game",
+            "request": "launch",
             "mainClass": "Game",
             "projectName": "ScrollingGame"
         }
