@@ -4,7 +4,7 @@ public class Color {
   private int green;
   private int blue;
   
-  public Color(int r, int g, int b) {
+  public Color(int r, int g, int b)  {
     red = r;
     green = g;
     blue = b;
