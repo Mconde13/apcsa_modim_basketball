@@ -32,8 +32,32 @@ public class Game {
   }
   
   public void handleKeyPress(){
+    int key = grid.checkLastKeyPressed();
+    System.out.println(key);
 
-  }
+    if((key == 87 || key == 38) && userRow != 0){
+      userRow--;
+
+      Location loc = new Location(userRow,0);
+      grid.setImage(loc,"user.gif");
+
+      Location oldLoc = new Location(userRow+1,0);
+      grid.setImage(oldLoc,null);
+
+   }else if((key == 40 || key == 83) && userRow != 4){
+
+    userRow++;
+
+    Location loc = new Location(userRow,0);
+    grid.setImage(loc,"user.gif");
+    
+    Location oldLoc = new Location(userRow-1,0);
+    grid.setImage(oldLoc,null);
+
+}
+  
+}
+
   
   public void populateRightEdge(){
 
