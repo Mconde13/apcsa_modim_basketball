@@ -11,7 +11,7 @@
             "name": "CodeLens (Launch) - Game",
             "request": "launch",
             "mainClass": "Game",
-            "projectName": "ScrollingGame"
+            "projectName": "ModimGame"
         }
     ]
 }
