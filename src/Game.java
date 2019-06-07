@@ -5,6 +5,8 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
+  private String defPic = "avoid.png";
+  private String hoopPic =  "get.png";
   
   public Game() {
 
@@ -59,9 +61,25 @@ public class Game {
 }
 
   
-  public void populateRightEdge(){
+private void populateRightEdge() {
+
+for(int i = 0; i < grid.getNumRows();i++){
+
+
+  Location loc = new Location(i,grid.getNumCols()-1);
+
+  double random = Math.random();
+
+  if (random < .1) {
+    grid.setImage(loc, defPic);
+  }
+  else if (random < .3) {
+    grid.setImage(loc,hoopPic);
+   }
 
   }
+
+}
   
   public void scrollLeft(){
 
