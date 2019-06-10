@@ -5,8 +5,9 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
-  private String defPic = "avoid.gif";
-  private String hoopPic =  "get.gif";
+  private String defPic = "avoid.jpg";
+  private String ballPic =  "ball.gif";
+  private String userPic = "hoop.jpg";
   
   public Game() {
     grid = new Grid(5, 10);
@@ -16,7 +17,7 @@ public class Game {
     timesGet = 0;
     timesAvoid = 0;
     updateTitle();
-    grid.setImage(new Location(userRow, userCol), "user.gif");
+    grid.setImage(new Location(userRow, userCol), userPic);
   }
   
   public void play() {
@@ -35,16 +36,20 @@ public class Game {
   public void handleKeyPress(){
     int key = grid.checkLastKeyPressed();
     System.out.println(key);
+
+
     if((key == 87 || key == 38) && userRow != 0){
       userRow--;
       Location loc = new Location(userRow,userCol);
-      grid.setImage(loc,"user.gif");
+      grid.setImage(loc,userPic);
       Location oldLoc = new Location(userRow+1,userCol);
       grid.setImage(oldLoc,null);
-   }else if((key == 40 || key == 83) && userRow != 4){
+   
+   
+    }else if((key == 40 || key == 83) && userRow != 4){
     userRow++;
     Location loc = new Location(userRow,userCol);
-    grid.setImage(loc,"user.gif");
+    grid.setImage(loc,userPic);
     
     Location oldLoc = new Location(userRow-1,userCol);
     grid.setImage(oldLoc,null);
@@ -55,7 +60,7 @@ public class Game {
 else if((key == 37 || key == 65) && userCol != 0){
   userCol--;
   Location loc = new Location(userRow,userCol);
-  grid.setImage(loc,"user.gif");
+  grid.setImage(loc,userPic);
   Location oldLoc = new Location(userRow,userCol+1);
   grid.setImage(oldLoc,null);
 
@@ -63,9 +68,9 @@ else if((key == 37 || key == 65) && userCol != 0){
 }else if((key == 39 || key == 68) && userCol != grid.getNumCols() - 1){
 userCol++;
 Location loc = new Location(userRow,userCol);
-grid.setImage(loc,"user.gif");
+grid.setImage(loc,userPic);
 
-Location oldLoc = new Location(userRow,userCol);
+Location oldLoc = new Location(userRow,userCol-1);
 grid.setImage(oldLoc,null);
 }
 
@@ -76,11 +81,11 @@ private void populateNewThings() {
 for(int i = 0; i < grid.getNumCols();i++){
   Location loc = new Location(0,i);
   double random = Math.random();
-  if (random < .1) {
+  if (random < .02) {
     grid.setImage(loc, defPic);
   }
-  else if (random < .3) {
-    grid.setImage(loc,hoopPic);
+  else if (random < .08) {
+    grid.setImage(loc,ballPic);
    }
   }
 }
@@ -103,7 +108,7 @@ for(int i = 0; i < grid.getNumCols();i++){
   
   public boolean isGameOver() {
     if (getScore()<-1){
-			System.out.println("You are dum wack");
+			System.out.println("You are bad, try again");
 			return true;
 		}
 		return false;
