@@ -5,7 +5,7 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
-  private String defPic = "avoid.jpg";
+  private String defPic = "avoid.png";
   private String ballPic =  "ball.gif";
   private String userPic = "hoop.jpg";
   
