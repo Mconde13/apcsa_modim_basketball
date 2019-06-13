@@ -5,14 +5,14 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
-  private String defPic = "avoid.png";
-  private String ballPic =  "ball.gif";
-  private String userPic = "hoop.jpg";
+  private String defPic = "imageedit_3_5974758706.png";
+  private String ballPic =  "ball.png";
+  private String userPic = "58888515bc2fc2ef3a186097.png";
   
   public Game() {
     grid = new Grid(15, 5);
-    userRow = 4;
-    userCol = 0;
+    userRow = 14;
+    userCol = 4;
     msElapsed = 0;
     timesGet = 0;
     timesAvoid = 0;
@@ -96,7 +96,7 @@ for(int i = grid.getNumRows()-1; i >= 0 ;i--){
 Location oldLoc = new Location(i, j);
 Location newLoc = new Location(i+1,j);
 
-if(i==4){
+if(i==14){
 grid.setImage(oldLoc,null); 
 
 } else if(ballPic.equals(grid.getImage(oldLoc))){
