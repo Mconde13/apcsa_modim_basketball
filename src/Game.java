@@ -10,7 +10,7 @@ public class Game {
   private String userPic = "hoop.jpg";
   
   public Game() {
-    grid = new Grid(5, 10);
+    grid = new Grid(15, 5);
     userRow = 4;
     userCol = 0;
     msElapsed = 0;
@@ -46,7 +46,7 @@ public class Game {
       grid.setImage(oldLoc,null);
    
    
-    }else if((key == 40 || key == 83) && userRow != 4){
+    }else if((key == 40 || key == 83) && userRow != grid.getNumRows()-1){
     userRow++;
     Location loc = new Location(userRow,userCol);
     grid.setImage(loc,userPic);
