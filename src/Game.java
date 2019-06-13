@@ -90,9 +90,26 @@ for(int i = 0; i < grid.getNumCols();i++){
   }
 }
   
-  public void dropThings(){
+public void dropThings(){
+for(int i = grid.getNumRows()-1; i >= 0 ;i--){
+  for(int j = 0; j < grid.getNumCols();j++){
+Location oldLoc = new Location(i, j);
+Location newLoc = new Location(i+1,j);
 
+if(i==4){
+grid.setImage(oldLoc,null); 
 
+} else if(ballPic.equals(grid.getImage(oldLoc))){
+
+grid.setImage(oldLoc, null);
+  grid.setImage(newLoc, ballPic);
+} else if(defPic.equals(grid.getImage(oldLoc))){
+  grid.setImage(oldLoc, null);
+  grid.setImage(newLoc, defPic);
+}
+  }
+}
+grid.setImage(new Location(userRow,userCol),userPic);
   }
   
   public void handleCollision(Location loc) {
