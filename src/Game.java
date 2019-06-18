@@ -10,12 +10,8 @@ public class Game {
   private String userPic = "58888515bc2fc2ef3a186097.png";
   private int counter = 0;
   private String backGround = "animated-cartoon-blue-sky-with-white-clouds_vj92cw5je__F0000.png";
-<<<<<<< HEAD
-  
-=======
   private String swish = "src/swoosh.wav";
   private String error = "src/banana.wav";
->>>>>>> fcb5fc87e0c6b911a7523ad7e7a46dfb6292dc5c
   
   public Game() {
     grid = new Grid(15, 8,backGround);
@@ -122,17 +118,19 @@ grid.setImage(oldLoc, null);
   }
   
   public void handleCollision() {
-   String itemAtCell = grid.getImage(new Location(userRow,userCol));
-if(itemAtCell == null|| itemAtCell.equals(userPic)){
-  return;
+    String itemAtCell = grid.getImage(new Location(userRow,userCol));
+ if(itemAtCell == null|| itemAtCell.equals(userPic)){
+   return;
+ }
+ if(itemAtCell.equals(ballPic)){
+   WavPlayer.play(swish);
+ counter++;
+ }else{
+   WavPlayer.play(error);
+   counter--;
+ }
 }
-if(itemAtCell.equals(ballPic)){
-counter++;
-}else{
-  
-  counter--;
-}
-  }
+
   public void refreshHoop(){
     grid.setImage(new Location(userRow,userCol),userPic);
   }
