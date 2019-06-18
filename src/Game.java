@@ -10,8 +10,7 @@ public class Game {
   private String userPic = "58888515bc2fc2ef3a186097.png";
   private int counter = 0;
   private String backGround = "animated-cartoon-blue-sky-with-white-clouds_vj92cw5je__F0000.png";
-  private String swish = "Swoosh 3-SoundBible.com-1573211927.wav";
-  private String error = "Banana Peel Slip Zip-SoundBible.com-803276918.wav";
+  
   
   public Game() {
     grid = new Grid(15, 8,backGround);
@@ -123,10 +122,9 @@ if(itemAtCell == null|| itemAtCell.equals(userPic)){
   return;
 }
 if(itemAtCell.equals(ballPic)){
-  WavPlayer.play(swish);
 counter++;
 }else{
-  WavPlayer.play(error);
+  
   counter--;
 }
   }
