@@ -5,8 +5,11 @@
  *  You can convert an .mp3 file to a .wav file here:
  *  https://audio.online-convert.com/convert-to-wav
  *  
- * If you place the .wav file in your "src" folder,
- * and writing JUST the file name as the String input (ie. "fileName.wav")
+ * If you use the static play() method,
+ * write your .wav file name as "src/filename.wav")
+ * 
+ * If you are using the WavPlayer object, 
+ * you can use JUST the file name as the String input (ie. "fileName.wav")
  * 
  * Version 2: Capability given to create multiple sound objects
  * Version 3: Works with runnable jars
@@ -33,9 +36,8 @@ public class WavPlayer {
 
 		try {
 			// Open an audio input stream.
-			//URL url = this.getClass().getClassLoader().getResource(wavMusicFile);
 			URL url = new File(w).toURI().toURL();
-
+			
 			AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
 			// Get a sound clip resource.
 			Clip c = AudioSystem.getClip();
