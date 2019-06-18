@@ -58,7 +58,6 @@ public class WavPlayer {
 	 */
 	public WavPlayer(String track) {
 		this.wavMusicFile = track;
-		startSound();
 
 	}
 

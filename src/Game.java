@@ -12,7 +12,7 @@ public class Game {
   private String backGround = "animated-cartoon-blue-sky-with-white-clouds_vj92cw5je__F0000.png";
   private String swish = "src/swoosh.wav";
   private String error = "src/banana.wav";
-  
+  private WavPlayer song;
   public Game() {
     grid = new Grid(15, 8,backGround);
     userRow = 14;
@@ -22,14 +22,18 @@ public class Game {
     timesAvoid = 0;
     updateTitle();
     grid.setImage(new Location(userRow, userCol), userPic);
+    song = new WavPlayer("y2mate.com - kurtis_blow_basketball__shxzlTRK44.wav");
   }
   
   public void play() {
     while (!isGameOver()) {
       grid.pause(100);
+      
       handleKeyPress();
       if (msElapsed % 300 == 0) {
+        
         dropThings();
+        touchesBottom();
         handleCollision();
         refreshHoop();
         populateNewThings();
@@ -87,7 +91,7 @@ private void populateNewThings() {
 for(int i = 0; i < grid.getNumCols();i++){
   Location loc = new Location(0,i);
   double random = Math.random();
-  if (random < .02) {
+  if (random < .025) {
     grid.setImage(loc, defPic);
   }
   else if (random < .05) {
@@ -116,7 +120,16 @@ grid.setImage(oldLoc, null);
   }
 }
   }
+  public void touchesBottom() {
+    for(int i = 0; i < grid.getNumCols();i++){
+    String itemAtCell = grid.getImage(new Location(14,i));
+    if((ballPic).equals(itemAtCell)){
+      WavPlayer.play(error);
+      counter--;
+    }
+  }
   
+}
   public void handleCollision() {
     String itemAtCell = grid.getImage(new Location(userRow,userCol));
  if(itemAtCell == null|| itemAtCell.equals(userPic)){
@@ -127,9 +140,11 @@ grid.setImage(oldLoc, null);
  counter++;
  }else{
    WavPlayer.play(error);
-   counter--;
+   counter = counter - 2;
  }
-}
+ 
+ }
+  
 
   public void refreshHoop(){
     grid.setImage(new Location(userRow,userCol),userPic);
@@ -144,8 +159,11 @@ grid.setImage(oldLoc, null);
   }
   
   public boolean isGameOver() {
-    if (getScore()<=-5){
-			System.out.println("You are bad, try again");
+    if (getScore()<=-10){
+      System.out.println("You are bad, try again");
+      if(getScore()>=30){
+        System.out.println("You win");
+      }
 			return true;
 		}
 		return false;
