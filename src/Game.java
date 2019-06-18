@@ -12,17 +12,16 @@ public class Game {
   private String backGround = "animated-cartoon-blue-sky-with-white-clouds_vj92cw5je__F0000.png";
   private String swish = "src/swoosh.wav";
   private String error = "src/banana.wav";
-  private WavPlayer song;
+  private WavPlayer song = new WavPlayer("y2mate.com - kurtis_blow_basketball__shxzlTRK44.wav");
   public Game() {
-    grid = new Grid(15, 8,backGround);
+    grid = new Grid(15, 28,backGround);
     userRow = 14;
-    userCol = 7;
+    userCol = 27;
     msElapsed = 0;
     timesGet = 0;
     timesAvoid = 0;
     updateTitle();
     grid.setImage(new Location(userRow, userCol), userPic);
-    song = new WavPlayer("y2mate.com - kurtis_blow_basketball__shxzlTRK44.wav");
   }
   
   public void play() {
@@ -137,10 +136,10 @@ grid.setImage(oldLoc, null);
  }
  if(itemAtCell.equals(ballPic)){
    WavPlayer.play(swish);
- counter++;
+ counter = counter + 2;
  }else{
    WavPlayer.play(error);
-   counter = counter - 2;
+   counter = counter - 1;
  }
  
  }
@@ -159,7 +158,7 @@ grid.setImage(oldLoc, null);
   }
   
   public boolean isGameOver() {
-    if (getScore()<=-10){
+    if (getScore()<=-30){
       System.out.println("You are bad, try again");
       if(getScore()>=30){
         System.out.println("You win");
