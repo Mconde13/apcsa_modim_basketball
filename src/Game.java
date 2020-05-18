@@ -171,5 +171,6 @@ grid.setImage(oldLoc, null);
   public static void main(String[] args) {
     Game game = new Game();  
     game.play();
+    //new code here
   }
 }
