@@ -10,8 +10,8 @@ public class Game {
   private String userPic = "58888515bc2fc2ef3a186097.png";
   private int counter = 0;
   private String backGround = "animated-cartoon-blue-sky-with-white-clouds_vj92cw5je__F0000.png";
-  private String swish = "src/swoosh.wav";
-  private String error = "src/banana.wav";
+  private String swish = "swoosh.wav";
+  private String error = "banana.wav";
   private String backgroundSong = "basketball.wav";
   private WavPlayer song = new WavPlayer(backgroundSong);
 
@@ -123,12 +123,12 @@ public class Game {
     }
     if (itemAtCell.equals(ballPic)) {
       WavPlayer.play(swish);
-      counter = counter + 3;
+      counter += 3; // Increment the score
     } else {
       WavPlayer.play(error);
-      counter = counter - 5;
+      counter -= 5; // Decrement the score
     }
-
+    updateTitle(); // Update the score display after handling collision
   }
 
   public void refreshHoop() {
